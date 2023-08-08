@@ -10,6 +10,9 @@
  *   current context is the main thread or not.
  * - Display the thread ID.
  *
+ * To build:
+ * - g++ 001_create_thread_get_id.cpp -o 001_create_thread_get_id.exe 
+ *
  * @copyright Copyright (c) 2023
  * 
  */

@@ -25,18 +25,22 @@
 
 void init_logging()
 {
-    // Add console logs
+    // TODO: where is the list of standard format entities.
+
+    // Send logs to console, limited to errors
     boost::log::add_console_log(
         std::cout,
-        boost::log::keywords::filter     = boost::log::trivial::severity >= boost::log::trivial::trace,
+        boost::log::keywords::filter     = boost::log::trivial::severity >= boost::log::trivial::error,
         boost::log::keywords::format     = "[%TimeStamp%] [%ThreadID%] [%Severity%]: %Message%"
     );
-    // Add file logs
+    // Add a rotated file, at either 1MB or midnight whichever comes first.
     boost::log::add_file_log(
         boost::log::keywords::file_name           = "tpool_test_%N.log",
         boost::log::keywords::open_mode           = std::ios::out | std::ios::app,
         // boost::log::keywords::auto_flush          = true,
+        // Rotate file when it gets larger than 1MB
         boost::log::keywords::rotation_size       = 1 * 1024 * 1024,
+        // Rotate file at midnight
         boost::log::keywords::time_based_rotation = boost::log::sinks::file::rotation_at_time_point(0, 0, 0),
         // ProcessID if we need process
         boost::log::keywords::format              = "[%TimeStamp%] [%ThreadID%] [%Severity%]: %Message%"

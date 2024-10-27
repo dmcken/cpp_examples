@@ -64,5 +64,12 @@ int main()
     BOOST_LOG_SEV(lg, boost::log::trivial::error) << "An error severity message";
     BOOST_LOG_SEV(lg, boost::log::trivial::fatal) << "A fatal severity message";
 
+    BOOST_LOG_TRIVIAL(trace)   << "Trivial trace";
+    BOOST_LOG_TRIVIAL(debug)   << "Trivial debug";
+    BOOST_LOG_TRIVIAL(info)    << "Trivial info";
+    BOOST_LOG_TRIVIAL(warning) << "Trivial warning";
+    BOOST_LOG_TRIVIAL(error)   << "Trivial error";
+    BOOST_LOG_TRIVIAL(fatal)   << "Trivial fatal";
+
     return 0;
 }
